@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,10 +22,16 @@ Route::get('/', function () {
 
 Route::get('/login_page', function () {
     return view('login');
-});
+})->middleware('guest')->name('login');
 
 // Route Login
 Route::post('/login_guru', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
 // Route Admin
-Route::get('/admin-dashboard', [AdminController::class, 'index'])->middleware('guest');
+Route::get('/admin-dashboard', [AdminController::class, 'index'])->middleware('guru');
+
+// CRUD ADMIN
+
+// CRUD SISWA
+Route::resource('/admin-siswa', SiswaController::class);

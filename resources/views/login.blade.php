@@ -57,7 +57,7 @@
 
                     <div class="wrap-input100 validate-input" data-validate="Enter password">
 
-                        <input class="input100" type="text" name="nip">
+                        <input class="input100" type="text" name="password">
                         <span class="focus-input100" data-placeholder="NIP"></span>
                     </div>
 
