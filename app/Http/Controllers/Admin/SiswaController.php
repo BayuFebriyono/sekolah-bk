@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Siswa;
 
 class SiswaController extends Controller
 {
@@ -14,7 +15,10 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
+        $siswa = Siswa::all();
+        return view('admin.siswa.list', [
+            'siswa' => $siswa
+        ]);
     }
 
     /**
@@ -35,7 +39,25 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'tahun_masuk' => 'required',
+            'nomor_induk' => 'required|numeric|unique:siswas,nomor_induk',
+            'nama' => 'required|min:5',
+            'alamat' => 'required|min:15',
+            'jenis_kelamin' => 'required',
+            'nama_wali' => 'required|min:5',
+            'hp_siswa' => 'required|min:11|unique:siswas,hp_siswa|max:14',
+            'hp_wali' => 'required|min:11|unique:siswas,hp_wali|max:14',
+            'tes_diagnostik' => 'required',
+            'kata_kunci' => 'required',
+            'tahun_pelajaran' => 'required'
+        ]);
+
+        $validatedData['password'] = bcrypt($request->nomor_induk);
+
+        Siswa::create($validatedData);
+
+        return back()->with('success', 'Data berhasil Ditambahkan');
     }
 
     /**

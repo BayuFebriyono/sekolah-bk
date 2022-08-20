@@ -3,13 +3,14 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="index.html" class="app-brand-link">
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Konseling</span>
+            <span class="app-brand-text demo menu-text fw-bolder">Konseling</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
             <i class="bx bx-chevron-left bx-sm align-middle"></i>
         </a>
     </div>
+    <p class="text-muted ms-2">Welcome back, {{ Auth::guard('guru')->user()->nama }}</p>
 
     <div class="menu-inner-shadow"></div>
 
@@ -33,7 +34,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="layouts-without-navbar.html" class="menu-link">
+                    <a href="/admin-siswa" class="menu-link">
                         <div data-i18n="Without navbar">List Data Siswa</div>
                     </a>
                 </li>

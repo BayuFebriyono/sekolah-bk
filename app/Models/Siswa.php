@@ -10,4 +10,6 @@ use Laravel\Sanctum\HasApiTokens;
 class Siswa extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    protected $guarded = ['id'];
 }

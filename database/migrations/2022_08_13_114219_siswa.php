@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('tahun_masuk', 4);
             $table->string('nomor_induk');
-            $table->string('nomor_induk_hash');
+            $table->string('password');
             $table->string('nama');
             $table->text('alamat');
             $table->char('jenis_kelamin');

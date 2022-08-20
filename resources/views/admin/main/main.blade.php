@@ -49,6 +49,7 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/css/core.css') }}" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/demo.css') }}" />
+    @yield('add-css')
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
@@ -140,6 +141,7 @@ id="layout-navbar"
 
     <!-- Main JS -->
     <script src="{{ asset('admin/assets/js/main.js') }}"></script>
+    @yield('add-script')
 
     <!-- Page JS -->
     <script src="{{ asset('admin/assets/js/dashboards-analytics.js') }}"></script>
