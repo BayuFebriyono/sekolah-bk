@@ -52,7 +52,7 @@ class WaliKelasController extends Controller
         ]);
 
         Guru::where('id', $request->guru_id)->update([
-            'bk' => true
+            'walas' => true
         ]);
 
         WaliKelas::create($validatedData);

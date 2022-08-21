@@ -12,4 +12,14 @@ class Siswa extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $guarded = ['id'];
+
+    public function wargaKelas()
+    {
+        return $this->hasOne(WargaKelas::class);
+    }
+
+    public function rekamanTataTertib()
+    {
+        $this->hasMany(RekamanTataTertib::class);
+    }
 }

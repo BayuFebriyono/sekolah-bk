@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WaliKelas extends Model
+class WargaKelas extends Model
 {
     use HasFactory;
-    protected $table = 'wali_kelas';
+    protected $table = 'warga_kelas';
     protected $guarded = ['id'];
 
-    public function guru()
+    public function siswa()
     {
-        return $this->belongsTo(Guru::class);
+        return $this->belongsTo(Siswa::class);
     }
 
     public function kelas()
@@ -21,8 +21,8 @@ class WaliKelas extends Model
         return $this->belongsTo(Kelas::class);
     }
 
-    public function wargaKelas()
+    public function waliKelas()
     {
-        return $this->hasOne(WargaKelas::class);
+        return $this->belongsTo(WaliKelas::class);
     }
 }

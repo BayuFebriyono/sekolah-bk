@@ -29,4 +29,9 @@ class Guru extends Authenticatable
     {
         return $this->hasOne(Kesiswaan::class);
     }
+
+    public function rekamanTataTertib()
+    {
+        $this->hasMany(RekamanTataTertib::class);
+    }
 }

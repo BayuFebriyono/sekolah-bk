@@ -65,23 +65,10 @@
 
         {{-- Warga Kelas --}}
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a href="/admin-warga" class="menu-link">
                 <i class="menu-icon tf-icons fa-solid fa-children"></i>
-                <div data-i18n="Layouts">Warga Kelas</div>
+                <div data-i18n="Boxicons">Warga Kelas</div>
             </a>
-
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="layouts-without-menu.html" class="menu-link">
-                        <div data-i18n="Without menu">Tambah Data</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-without-navbar.html" class="menu-link">
-                        <div data-i18n="Without navbar">List Data Siswa</div>
-                    </a>
-                </li>
-            </ul>
         </li>
 
         {{-- Guru --}}
@@ -135,7 +122,7 @@
         </li>
 
         <li class="menu-item">
-            <a href="" class="menu-link">
+            <a href="/logout" class="menu-link">
                 <i class="menu-icon tf-icon fa-solid fa-arrow-right-from-bracket"></i>
                 <div data-i18n="Boxicons">Sign Out</div>
             </a>

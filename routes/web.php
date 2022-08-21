@@ -7,7 +7,10 @@ use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\KesiswaanController;
 use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\Admin\WaliKelasController;
+use App\Http\Controllers\Admin\WargaKelasController;
+use App\Http\Controllers\Bk\TataTertibController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RekamanTartibController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +35,7 @@ Route::get('/login_page', function () {
 // Route Login
 Route::post('/login_guru', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 // Route Admin
 Route::get('/admin-dashboard', [AdminController::class, 'index'])->middleware('guru');
@@ -50,3 +54,17 @@ Route::resource('/admin-walas', WaliKelasController::class)->middleware('guru');
 Route::resource('/admin-bk', GuruBkController::class)->middleware('guru');
 // CRUD KESISWAAN
 Route::resource('/admin-kesiswaan', KesiswaanController::class)->middleware('guru');
+// CRUD WARGA KELAS
+Route::resource('/admin-warga', WargaKelasController::class)->middleware('guru');
+
+
+// Route BK
+Route::get('/bk-dashboard', function () {
+    return view('bk.main.main');
+})->middleware('guru_bk');
+
+// CRUD TATA TERTIB
+Route::resource('/bk-tartib', TataTertibController::class)->middleware('guru_bk');
+
+// CRUD REKAMAN TATATERTIB  nanti dikasih middleware ya
+Route::resource('/rekaman-tartib', RekamanTartibController::class);

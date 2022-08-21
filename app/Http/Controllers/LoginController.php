@@ -17,8 +17,11 @@ class LoginController extends Controller
 
         if (Auth::guard('guru')->attempt($credentials)) {
             $request->session()->regenerate();
-
-            return redirect()->intended('/admin-dashboard');
+            if (Auth::guard('guru')->user()->admin) {
+                return redirect()->intended('/admin-dashboard');
+            } else if (Auth::guard('guru')->user()->bk) {
+                return redirect()->intended('/bk-dashboard');
+            }
         } else {
             return back()->with('error', 'Email Atau Password Salah');
         }

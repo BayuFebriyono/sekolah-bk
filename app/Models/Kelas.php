@@ -16,4 +16,9 @@ class Kelas extends Model
     {
         return $this->hasOne(WaliKelas::class);
     }
+
+    public function wargaKelas()
+    {
+        return $this->hasOne(WargaKelas::class);
+    }
 }

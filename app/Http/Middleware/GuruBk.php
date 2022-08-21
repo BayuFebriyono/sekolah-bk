@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Guru
+class GuruBk
 {
     /**
      * Handle an incoming request.
@@ -18,7 +18,7 @@ class Guru
     public function handle(Request $request, Closure $next)
     {
         if (Auth::guard('guru')->check()) {
-            if (Auth::guard('guru')->user()->admin) {
+            if (Auth::guard('guru')->user()->bk) {
                 return $next($request);
             } else {
                 abort(403, 'Anda Tidak Memiliki Hak Akses');
