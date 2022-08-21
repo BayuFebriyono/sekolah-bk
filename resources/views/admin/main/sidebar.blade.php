@@ -51,13 +51,13 @@
 
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="layouts-without-menu.html" class="menu-link">
+                    <a href="/admin-kelas/create" class="menu-link">
                         <div data-i18n="Without menu">Tambah Data</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="layouts-without-navbar.html" class="menu-link">
-                        <div data-i18n="Without navbar">List Data Siswa</div>
+                    <a href="/admin-kelas" class="menu-link">
+                        <div data-i18n="Without navbar">List Data Kelas</div>
                     </a>
                 </li>
             </ul>
@@ -93,13 +93,13 @@
 
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="layouts-without-menu.html" class="menu-link">
+                    <a href="/admin-guru/create" class="menu-link">
                         <div data-i18n="Without menu">Tambah Data</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="layouts-without-navbar.html" class="menu-link">
-                        <div data-i18n="Without navbar">List Data Siswa</div>
+                    <a href="/admin-guru" class="menu-link">
+                        <div data-i18n="Without navbar">List Data Guru</div>
                     </a>
                 </li>
             </ul>
@@ -107,66 +107,27 @@
 
         {{-- Wali Kelas --}}
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a href="/admin-walas" class="menu-link">
                 <i class="menu-icon tf-icon fa-solid fa-person-chalkboard"></i>
-                <div data-i18n="Layouts">Wali Kelas</div>
+                <div data-i18n="Boxicons">Wali Kelas</div>
             </a>
-
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="layouts-without-menu.html" class="menu-link">
-                        <div data-i18n="Without menu">Tambah Data</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-without-navbar.html" class="menu-link">
-                        <div data-i18n="Without navbar">List Data Siswa</div>
-                    </a>
-                </li>
-            </ul>
         </li>
 
 
         {{-- Guru BK --}}
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a href="/admin-bk" class="menu-link">
                 <i class="menu-icon tf-icon fa-solid fa-person-chalkboard"></i>
-                <div data-i18n="Layouts">Guru BK</div>
+                <div data-i18n="Boxicons">Guru BK</div>
             </a>
-
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="layouts-without-menu.html" class="menu-link">
-                        <div data-i18n="Without menu">Tambah Data</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-without-navbar.html" class="menu-link">
-                        <div data-i18n="Without navbar">List Data Siswa</div>
-                    </a>
-                </li>
-            </ul>
         </li>
 
         {{-- Kesiswaan --}}
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a href="/admin-kesiswaan" class="menu-link">
                 <i class="menu-icon tf-icon fa-solid fa-person-chalkboard"></i>
-                <div data-i18n="Layouts">Kesiswaan</div>
+                <div data-i18n="Boxicons">Guru Kesiswaan</div>
             </a>
-
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="layouts-without-menu.html" class="menu-link">
-                        <div data-i18n="Without menu">Tambah Data</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-without-navbar.html" class="menu-link">
-                        <div data-i18n="Without navbar">List Data Siswa</div>
-                    </a>
-                </li>
-            </ul>
         </li>
 
         <li class="menu-header small text-uppercase">

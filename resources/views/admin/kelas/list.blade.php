@@ -10,32 +10,16 @@
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Tahun Masuk</th>
-                    <th>Nomor Induk</th>
-                    <th>Nama</th>
-                    <th>Alamat</th>
-                    <th>Jenis Kelamin</th>
-                    <th>No HP Siswa</th>
-                    <th>No HP Wali</th>
-                    <th>Tes Diagnostik</th>
-                    <th>Kata Kunci</th>
-                    <th>Tahun Pelajaran</th>
+                    <th>Tingkat</th>
+                    <th>Nama Kelas</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($siswa as $s)
+                @foreach ($kelas as $k)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $s->tahun_masuk }}</td>
-                        <td>{{ $s->nomor_induk }}</td>
-                        <td>{{ $s->nama }}</td>
-                        <td>{{ $s->alamat }}</td>
-                        <td>{{ $s->jenis_kelamin == 'L' ? 'Laki Laki' : 'Perempuan' }}</td>
-                        <td>{{ $s->hp_siswa }}</td>
-                        <td>{{ $s->hp_wali }}</td>
-                        <td>{{ $s->tes_diagnostik }}</td>
-                        <td>{{ $s->kata_kunci }}</td>
-                        <td>{{ $s->tahun_pelajaran }}</td>
+                        <td>{{ $k->tingkat }}</td>
+                        <td>{{ $k->nama_kelas }}</td>
                     </tr>
                 @endforeach
             </tbody>

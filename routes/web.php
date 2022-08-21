@@ -1,7 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\GuruBkController;
+use App\Http\Controllers\Admin\GuruController;
+use App\Http\Controllers\Admin\KelasController;
+use App\Http\Controllers\Admin\KesiswaanController;
 use App\Http\Controllers\Admin\SiswaController;
+use App\Http\Controllers\Admin\WaliKelasController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,4 +39,14 @@ Route::get('/admin-dashboard', [AdminController::class, 'index'])->middleware('g
 // CRUD ADMIN
 
 // CRUD SISWA
-Route::resource('/admin-siswa', SiswaController::class);
+Route::resource('/admin-siswa', SiswaController::class)->middleware('guru');
+// CRUD KELAS
+Route::resource('/admin-kelas', KelasController::class)->middleware('guru');
+// CRUD GURU
+Route::resource('/admin-guru', GuruController::class)->middleware('guru');
+// CRUD WALAS
+Route::resource('/admin-walas', WaliKelasController::class)->middleware('guru');
+// CRUD GURU BK
+Route::resource('/admin-bk', GuruBkController::class)->middleware('guru');
+// CRUD KESISWAAN
+Route::resource('/admin-kesiswaan', KesiswaanController::class)->middleware('guru');

@@ -14,4 +14,19 @@ class Guru extends Authenticatable
 
 
     protected $guarded = ['id'];
+
+    public function waliKelas()
+    {
+        return $this->hasOne(WaliKelas::class);
+    }
+
+    public function guruBk()
+    {
+        return $this->hasOne(GuruBk::class);
+    }
+
+    public function kesiswaan()
+    {
+        return $this->hasOne(Kesiswaan::class);
+    }
 }

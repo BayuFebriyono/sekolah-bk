@@ -19,6 +19,6 @@ class Guru
     {
         if (Auth::guard('guru')->check())  return $next($request);
 
-        return redirect()->route('login');
+        return redirect()->guest(route('login'));
     }
 }
