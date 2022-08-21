@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Bk;
 
-use App\Models\Siswa;
-use App\Models\TataTertib;
+use App\Models\TindakLanjut;
 use Illuminate\Http\Request;
 use App\Models\RekamanTataTertib;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class RekamanTartibController extends Controller
+class TindakLanjutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class RekamanTartibController extends Controller
     public function index()
     {
         $rek_tartib = RekamanTataTertib::with(['guru', 'siswa', 'tataTertib'])->get();
-        return view('bk.rekaman_tartib.list', [
+        return view('bk.tindak_lanjut.list', [
             'rek' => $rek_tartib
         ]);
     }
@@ -30,12 +30,7 @@ class RekamanTartibController extends Controller
      */
     public function create()
     {
-        $tatatertib = TataTertib::all();
-        $siswa = Siswa::all();
-        return view('bk.rekaman_tartib.create', [
-            'tata_tertib' => $tatatertib,
-            'siswa' => $siswa
-        ]);
+        //
     }
 
     /**
@@ -47,24 +42,24 @@ class RekamanTartibController extends Controller
     public function store(Request $request)
     {
         $data = [
+            'rekaman_tata_tertib_id' => $request->rekaman_tata_tertib_id,
             'guru_id' => Auth::guard('guru')->user()->id,
-            'tata_tertib_id' => $request->tata_tertib_id,
-            'siswa_id' => $request->siswa_id,
-            'tahun_pelajaran' => $request->tahun_pelajaran,
-            'tanggal' => now()->toDate()
+            'tanggal' => now()->toDate(),
+            'tindak_lanjut' => $request->tindak_lanjut,
+            'hasil' => $request->hasil
         ];
 
-        RekamanTataTertib::create($data);
-        return back()->with('success', 'Data berhasil ditambahkan');
+        TindakLanjut::create($data);
+        return back()->with('success', 'Data ditambahkan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\RekamanTataTertib  $rekamanTataTertib
+     * @param  \App\Models\TindakLanjut  $tindakLanjut
      * @return \Illuminate\Http\Response
      */
-    public function show(RekamanTataTertib $rekamanTataTertib)
+    public function show(TindakLanjut $tindakLanjut)
     {
         //
     }
@@ -72,22 +67,24 @@ class RekamanTartibController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\RekamanTataTertib  $rekamanTataTertib
+     * @param  \App\Models\TindakLanjut  $tindakLanjut
      * @return \Illuminate\Http\Response
      */
-    public function edit(RekamanTataTertib $rekamanTataTertib)
+    public function edit(RekamanTataTertib $tindak_lanjut)
     {
-        //
+        return view('bk.tindak_lanjut.create', [
+            'rekaman' => $tindak_lanjut
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RekamanTataTertib  $rekamanTataTertib
+     * @param  \App\Models\TindakLanjut  $tindakLanjut
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RekamanTataTertib $rekamanTataTertib)
+    public function update(Request $request, TindakLanjut $tindakLanjut)
     {
         //
     }
@@ -95,10 +92,10 @@ class RekamanTartibController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\RekamanTataTertib  $rekamanTataTertib
+     * @param  \App\Models\TindakLanjut  $tindakLanjut
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RekamanTataTertib $rekamanTataTertib)
+    public function destroy(TindakLanjut $tindakLanjut)
     {
         //
     }

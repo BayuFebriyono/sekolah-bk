@@ -36,10 +36,10 @@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
-                <form class="login100-form validate-form" method="POST" action="{{ url('/login_guru') }}">
+                <form class="login100-form validate-form" method="POST" action="{{ url('/login_siswa') }}">
                     @csrf
                     <span class="login100-form-title p-b-26">
-                        Login Sebagai Guru
+                        Login Sebagai Siswa
                     </span>
                     @if (session('error'))
                         <div class="alert alert-danger" role="alert">
@@ -58,7 +58,7 @@
                     <div class="wrap-input100 validate-input" data-validate="Enter password">
 
                         <input class="input100" type="text" name="password">
-                        <span class="focus-input100" data-placeholder="NIP"></span>
+                        <span class="focus-input100" data-placeholder="Nomor Induk"></span>
                     </div>
 
                     <div class="container-login100-form-btn">
@@ -70,14 +70,14 @@
                         </div>
                     </div>
 
-                   
+
                     <div class="text-center ">
                         <span class="txt1">
-                            Anda Bukan Guru?,&nbsp;
+                            Anda Bukan Siswa?,&nbsp;
                         </span>
 
-                        <a class="txt2" href="/login_siswa">
-                            Login Sebagai Siswa
+                        <a class="txt2" href="/login_page">
+                            Login Sebagai Guru
                         </a>
                     </div>
                 </form>

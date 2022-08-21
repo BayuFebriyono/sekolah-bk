@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Bk;
 use App\Models\TataTertib;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Siswa;
 
 class TataTertibController extends Controller
 {
@@ -28,7 +29,7 @@ class TataTertibController extends Controller
      */
     public function create()
     {
-        return view('bk.tata_tertib.create');
+        return view('bk.rekaman_tartib.create');
     }
 
     /**

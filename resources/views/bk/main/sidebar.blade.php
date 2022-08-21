@@ -49,6 +49,14 @@
             </a>
         </li>
 
+        {{-- Tindak Lanjut --}}
+        <li class="menu-item">
+            <a href="/tindak-lanjut" class="menu-link">
+                <i class="menu-icon tf-icon fa-solid fa-clipboard"></i>
+                <div data-i18n="Boxicons">Tindak Lanjut</div>
+            </a>
+        </li>
+
 
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Lain Lain</span>

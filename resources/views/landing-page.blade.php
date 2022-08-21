@@ -60,10 +60,10 @@ https://templatemo.com/tm-548-training-studio
                             <li class="scroll-to-section"><a href="#our-classes">Classes</a></li>
                             <li class="scroll-to-section"><a href="#schedule">Schedules</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li>
-                            @if (Auth::guard('guru')->guest())
+                            @if (Auth::guard('guru')->guest() && Auth::guard('siswa')->guest())
                                 <li class="main-button"><a href="{{ url('login_page') }}">Sign In</a></li>
                             @endif
-                            @if (Auth::guard('guru')->check())
+                            @if (Auth::guard('guru')->check() || Auth::guard('siswa')->check())
                                 <form action="/logout" method="POST">
                                     @csrf
                                     <li class="main-button d-inline"><button class="btn btn-danger" type="submit">SIGN

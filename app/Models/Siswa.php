@@ -20,6 +20,6 @@ class Siswa extends Authenticatable
 
     public function rekamanTataTertib()
     {
-        $this->hasMany(RekamanTataTertib::class);
+        return $this->hasMany(RekamanTataTertib::class);
     }
 }

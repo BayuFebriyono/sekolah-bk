@@ -27,9 +27,25 @@ class LoginController extends Controller
         }
     }
 
+    public function siswaLogin(Request $request)
+    {
+        $credentials = $request->validate([
+            'nama' => ['required'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::guard('siswa')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/siswa-dashboard');
+        }
+
+        return back()->with('error', 'Email Atau Password Salah');
+    }
+
     public function logout(Request $request)
     {
         Auth::guard('guru')->logout();
+        Auth::guard('siswa')->logout();
 
         $request->session()->invalidate();
 

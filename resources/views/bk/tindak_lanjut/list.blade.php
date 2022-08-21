@@ -17,7 +17,6 @@
     </div>
 
     <div class="container">
-        <a href="/rekaman-tartib/create" class="btn btn-primary my-5">Tambah Data</a>
 
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
@@ -28,6 +27,7 @@
                     <th>Siswa</th>
                     <th>Tahun Pelajaran</th>
                     <th>Tanggal</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,6 +39,9 @@
                         <td>{{ $r->siswa->nama }}</td>
                         <td>{{ $r->tahun_pelajaran }}</td>
                         <td>{{ $r->tanggal }}</td>
+                        <td>
+                            <a href="/tindak-lanjut/{{ $r->id }}/edit" class="btn btn-warning">Tindak Lanjut</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

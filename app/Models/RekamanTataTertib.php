@@ -13,7 +13,7 @@ class RekamanTataTertib extends Model
 
     public function guru()
     {
-        $this->belongsTo(Guru::class);
+        return $this->belongsTo(Guru::class);
     }
     public function siswa()
     {
@@ -21,6 +21,6 @@ class RekamanTataTertib extends Model
     }
     public function tataTertib()
     {
-        $this->belongsTo(TataTertib::class);
+        return $this->belongsTo(TataTertib::class);
     }
 }

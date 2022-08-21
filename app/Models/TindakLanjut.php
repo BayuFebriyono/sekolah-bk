@@ -5,14 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TataTertib extends Model
+class TindakLanjut extends Model
 {
     use HasFactory;
-    protected $table = 'tata_tertib';
+    protected $table = 'tindak_lanjut';
     protected $guarded = ['id'];
-
-    public function rekamanTataTertib()
-    {
-        return $this->hasMany(RekamanTataTertib::class);
-    }
 }

@@ -6,9 +6,11 @@ use App\Http\Controllers\Admin\GuruController;
 use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\KesiswaanController;
 use App\Http\Controllers\Admin\SiswaController;
+use App\Http\Controllers\Siswa\SiswaController as SiswaBiasa;
 use App\Http\Controllers\Admin\WaliKelasController;
 use App\Http\Controllers\Admin\WargaKelasController;
 use App\Http\Controllers\Bk\TataTertibController;
+use App\Http\Controllers\Bk\TindakLanjutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RekamanTartibController;
 use Illuminate\Support\Facades\Route;
@@ -32,8 +34,13 @@ Route::get('/login_page', function () {
     return view('login');
 })->middleware('guest')->name('login');
 
+Route::get('/login_siswa', function () {
+    return view('login_siswa');
+})->middleware('guest')->name('login_siswa');
+
 // Route Login
 Route::post('/login_guru', [LoginController::class, 'login']);
+Route::post('/login_siswa', [LoginController::class, 'siswaLogin']);
 Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
@@ -68,3 +75,9 @@ Route::resource('/bk-tartib', TataTertibController::class)->middleware('guru_bk'
 
 // CRUD REKAMAN TATATERTIB  nanti dikasih middleware ya
 Route::resource('/rekaman-tartib', RekamanTartibController::class);
+
+// CRUD Tindak_lanjut
+Route::resource('/tindak-lanjut', TindakLanjutController::class);
+
+// Route Siswa
+Route::get('/siswa-dashboard', [SiswaBiasa::class, 'index']);
