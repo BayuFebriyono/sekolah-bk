@@ -49,7 +49,6 @@ class SiswaController extends Controller
             'hp_siswa' => 'required|min:11|unique:siswas,hp_siswa|max:14',
             'hp_wali' => 'required|min:11|unique:siswas,hp_wali|max:14',
             'tes_diagnostik' => 'required',
-            'kata_kunci' => 'required',
             'tahun_pelajaran' => 'required'
         ]);
 

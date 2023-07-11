@@ -20,5 +20,13 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        \App\Models\Guru::create([
+            'nip' => '123',
+            'password' => bcrypt('123'),
+            'nama' => 'Ahmad',
+            'alamat' => 'Sooko',
+            'jenis_kelamin' => 'L',
+            'admin' => true
+        ]);
     }
 }

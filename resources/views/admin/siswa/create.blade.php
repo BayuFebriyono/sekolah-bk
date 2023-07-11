@@ -134,13 +134,6 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="KataKunci">Kata Kunci</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="KataKunci" name="kata_kunci" required
-                                    value="{{ old('kata_kunci') }}">
-                            </div>
-                        </div>
 
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="TahunPelajaran">Tahun Pelajaran</label>

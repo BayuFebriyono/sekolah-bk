@@ -51,14 +51,14 @@
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-                        <input class="input100" type="text" name="nama">
-                        <span class="focus-input100" data-placeholder="nama"></span>
+                        <input class="input100" type="text" name="nomor_induk">
+                        <span class="focus-input100" data-placeholder="Nomor Induk"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Enter password">
 
-                        <input class="input100" type="text" name="password">
-                        <span class="focus-input100" data-placeholder="Nomor Induk"></span>
+                        <input class="input100" type="password" name="password">
+                        <span class="focus-input100" data-placeholder="Password"></span>
                     </div>
 
                     <div class="container-login100-form-btn">

@@ -29,7 +29,7 @@ class TataTertibController extends Controller
      */
     public function create()
     {
-        return view('bk.rekaman_tartib.create');
+        return view('bk.tata_tertib.create');
     }
 
     /**

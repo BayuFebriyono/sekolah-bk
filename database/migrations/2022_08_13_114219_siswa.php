@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('hp_siswa', 14);
             $table->string('hp_wali', 14);
             $table->text('tes_diagnostik');
-            $table->text('kata_kunci');
             $table->string('tahun_pelajaran', 10);
             $table->timestamps();
         });

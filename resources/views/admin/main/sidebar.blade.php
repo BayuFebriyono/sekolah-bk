@@ -122,6 +122,13 @@
         </li>
 
         <li class="menu-item">
+            <a href="/guru-ubah-pass" class="menu-link">
+                <i class="menu-icon tf-icon fa-solid fa-lock"></i>
+                <div data-i18n="Boxicons">Ganti Password</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
             <a href="/logout" class="menu-link">
                 <i class="menu-icon tf-icon fa-solid fa-arrow-right-from-bracket"></i>
                 <div data-i18n="Boxicons">Sign Out</div>

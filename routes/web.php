@@ -46,6 +46,8 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 // Route Admin
 Route::get('/admin-dashboard', [AdminController::class, 'index'])->middleware('guru');
+Route::get('/guru-ubah-pass', [LoginController::class, 'viewGuru'])->middleware('guru');
+Route::post('/guru-ubah-pass', [LoginController::class, 'ubahGuru'])->middleware('guru');
 
 // CRUD ADMIN
 
@@ -70,6 +72,9 @@ Route::get('/bk-dashboard', function () {
     return view('bk.main.main');
 })->middleware('guru_bk');
 
+Route::get('/bk-ubah-pass', [LoginController::class, 'viewBk'])->middleware('guru_bk');
+Route::post('/bk-ubah-pass', [LoginController::class, 'ubahGuru'])->middleware('guru_bk');
+
 // CRUD TATA TERTIB
 Route::resource('/bk-tartib', TataTertibController::class)->middleware('guru_bk');
 
@@ -81,3 +86,5 @@ Route::resource('/tindak-lanjut', TindakLanjutController::class);
 
 // Route Siswa
 Route::get('/siswa-dashboard', [SiswaBiasa::class, 'index']);
+Route::get('/siswa-ubah-pass', [LoginController::class, 'viewSiswa']);
+Route::post('/siswa-ubah-pass', [LoginController::class, 'ubahSiswa']);

@@ -25,6 +25,7 @@
                     <th>No.</th>
                     <th>Guru </th>
                     <th>Tata Tertib</th>
+                    <th>Poin</th>
                     <th>Siswa</th>
                     <th>Tahun Pelajaran</th>
                     <th>Tanggal</th>
@@ -36,6 +37,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $r->guru->nama }}</td>
                         <td>{{ $r->tataTertib->tata_tertib }}</td>
+                        <td>{{ $r->tataTertib->poin }}</td>
                         <td>{{ $r->siswa->nama }}</td>
                         <td>{{ $r->tahun_pelajaran }}</td>
                         <td>{{ $r->tanggal }}</td>
@@ -44,6 +46,7 @@
             </tbody>
 
         </table>
+        <p class="text-muted">Total Poin Anda Saat Ini adalah <b>{{ $total_poin }}</b></p>
     </div>
 @endsection
 

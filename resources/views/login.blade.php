@@ -51,14 +51,14 @@
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-                        <input class="input100" type="text" name="nama">
-                        <span class="focus-input100" data-placeholder="nama"></span>
+                        <input class="input100" type="text" name="nip">
+                        <span class="focus-input100" data-placeholder="nip"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Enter password">
 
-                        <input class="input100" type="text" name="password">
-                        <span class="focus-input100" data-placeholder="NIP"></span>
+                        <input class="input100" type="password" name="password">
+                        <span class="focus-input100" data-placeholder="Password"></span>
                     </div>
 
                     <div class="container-login100-form-btn">
@@ -70,7 +70,7 @@
                         </div>
                     </div>
 
-                   
+
                     <div class="text-center ">
                         <span class="txt1">
                             Anda Bukan Guru?,&nbsp;
