@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Siswa;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
 
 class SiswaController extends Controller
 {
@@ -49,7 +50,6 @@ class SiswaController extends Controller
             'hp_siswa' => 'required|min:11|unique:siswas,hp_siswa|max:14',
             'hp_wali' => 'required|min:11|unique:siswas,hp_wali|max:14',
             'tes_diagnostik' => 'required',
-            'tahun_pelajaran' => 'required'
         ]);
 
         $validatedData['password'] = bcrypt($request->nomor_induk);
@@ -76,9 +76,11 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Siswa $admin_siswa)
     {
-        //
+        return view('admin.siswa.edit', [
+            'siswa' => $admin_siswa
+        ]);
     }
 
     /**
@@ -88,9 +90,38 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $admin_siswa)
     {
-        //
+        $old_data = Siswa::where('id', $admin_siswa)->first();
+        $validatedData = $request->validate([
+            'tahun_masuk' => 'required',
+            'nomor_induk' => [
+                'required', 'numeric',
+                Rule::unique('siswas', 'nomor_induk')->where(function ($q) use ($old_data) {
+                    $q->where('nomor_induk', '!=', $old_data->nomor_induk);
+                })
+            ],
+            'nama' => 'required|min:5',
+            'alamat' => 'required|min:15',
+            'jenis_kelamin' => 'required',
+            'nama_wali' => 'required|min:5',
+            'hp_siswa' => [
+                'required', 'min:11', 'max:14',
+                Rule::unique('siswas', 'hp_siswa')->where(function ($q) use ($old_data) {
+                    $q->where('hp_siswa', '!=', $old_data->hp_siswa);
+                })
+            ],
+            'hp_wali' => [
+                'required', 'min:11', 'max:14',
+                Rule::unique('siswas', 'hp_wali')->where(function ($q) use ($old_data) {
+                    $q->where('hp_wali', '!=', $old_data->hp_wali);
+                })
+            ],
+            'tes_diagnostik' => 'required',
+        ]);
+
+        Siswa::where('id', $admin_siswa)->update($validatedData);
+        return redirect()->to('/admin-siswa')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -99,8 +130,9 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Siswa $admin_siswa)
     {
-        //
+        $admin_siswa->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }

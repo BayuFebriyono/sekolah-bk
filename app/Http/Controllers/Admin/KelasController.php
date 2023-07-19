@@ -65,9 +65,11 @@ class KelasController extends Controller
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kelas $kelas)
+    public function edit(Kelas $admin_kela)
     {
-        //
+        return view('admin.kelas.edit', [
+            'kelas' => $admin_kela
+        ]);
     }
 
     /**
@@ -77,9 +79,15 @@ class KelasController extends Controller
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kelas $kelas)
+    public function update(Request $request,  $admin_kela)
     {
-        //
+
+        $validatedData = $request->validate([
+            'tingkat' => 'required',
+            'nama_kelas' => 'required'
+        ]);
+        Kelas::where('id', $admin_kela)->update($validatedData);
+        return redirect()->to('/admin-kelas')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -88,8 +96,9 @@ class KelasController extends Controller
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kelas $kelas)
+    public function destroy(Kelas $admin_kela)
     {
-        //
+        $admin_kela->delete();
+        return back()->with('succes', 'Data berhasil dihapus');
     }
 }

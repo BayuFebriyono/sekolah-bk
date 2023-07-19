@@ -72,8 +72,10 @@ class TindakLanjutController extends Controller
      */
     public function edit(RekamanTataTertib $tindak_lanjut)
     {
+        $list_tindak_lanjut = TindakLanjut::where('rekaman_tata_tertib_id', $tindak_lanjut->id)->get();
         return view('bk.tindak_lanjut.create', [
-            'rekaman' => $tindak_lanjut
+            'rekaman' => $tindak_lanjut,
+            'tindak_lanjut' => $list_tindak_lanjut
         ]);
     }
 

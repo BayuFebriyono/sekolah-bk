@@ -22,75 +22,32 @@
 
         <!-- Siswa -->
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons fa-solid fa-children"></i>
-                <div data-i18n="Layouts">Data Siswa</div>
+            <a href="/admin-siswa" class="menu-link">
+                <i class="menu-icon tf-icon fa-solid fa-children"></i>
+                <div data-i18n="Boxicons">Data Siswa</div>
             </a>
-
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="/admin-siswa/create" class="menu-link">
-                        <div data-i18n="Without menu">Tambah Data</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="/admin-siswa" class="menu-link">
-                        <div data-i18n="Without navbar">List Data Siswa</div>
-                    </a>
-                </li>
-            </ul>
         </li>
 
 
         {{-- Kelas --}}
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a href="/admin-kelas" class="menu-link">
                 <i class="menu-icon tf-icon fa-solid fa-door-closed"></i>
-                <div data-i18n="Layouts">Data Kelas</div>
-            </a>
-
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="/admin-kelas/create" class="menu-link">
-                        <div data-i18n="Without menu">Tambah Data</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="/admin-kelas" class="menu-link">
-                        <div data-i18n="Without navbar">List Data Kelas</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        {{-- Warga Kelas --}}
-        <li class="menu-item">
-            <a href="/admin-warga" class="menu-link">
-                <i class="menu-icon tf-icons fa-solid fa-children"></i>
-                <div data-i18n="Boxicons">Warga Kelas</div>
+                <div data-i18n="Boxicons">Data Kelas</div>
             </a>
         </li>
+
+
+
 
         {{-- Guru --}}
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a href="/admin-guru" class="menu-link">
                 <i class="menu-icon tf-icon fa-solid fa-person-chalkboard"></i>
-                <div data-i18n="Layouts">Guru</div>
+                <div data-i18n="Boxicons">Data Guru</div>
             </a>
-
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="/admin-guru/create" class="menu-link">
-                        <div data-i18n="Without menu">Tambah Data</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="/admin-guru" class="menu-link">
-                        <div data-i18n="Without navbar">List Data Guru</div>
-                    </a>
-                </li>
-            </ul>
         </li>
+
 
         {{-- Wali Kelas --}}
         <li class="menu-item">
@@ -100,6 +57,13 @@
             </a>
         </li>
 
+        {{-- Warga Kelas --}}
+        <li class="menu-item">
+            <a href="/admin-warga" class="menu-link">
+                <i class="menu-icon tf-icons fa-solid fa-children"></i>
+                <div data-i18n="Boxicons">Warga Kelas</div>
+            </a>
+        </li>
 
         {{-- Guru BK --}}
         <li class="menu-item">

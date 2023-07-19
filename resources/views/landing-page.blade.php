@@ -123,7 +123,7 @@ https://templatemo.com/tm-548-training-studio
                                 <h4>Bimbingan Konseling</h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique porro fugiat unde
                                     itaque!</p>
-                                <a href="#" class="text-button">Discover More</a>
+                                <a href="/login_page" class="text-button">Discover More</a>
                             </div>
                         </li>
                         <li class="feature-item">

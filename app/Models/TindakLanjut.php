@@ -10,4 +10,9 @@ class TindakLanjut extends Model
     use HasFactory;
     protected $table = 'tindak_lanjut';
     protected $guarded = ['id'];
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class);
+    }
 }

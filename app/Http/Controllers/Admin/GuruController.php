@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Guru;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class GuruController extends Controller
 {
@@ -40,7 +41,7 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nip' => 'required|numeric|min:4',
+            'nip' => 'required|numeric|min:4|unique:gurus,nip',
             'nama' => 'required|min:5',
             'alamat' => 'required|min:15',
             'jenis_kelamin' => 'required'
@@ -69,9 +70,11 @@ class GuruController extends Controller
      * @param  \App\Models\Guru  $guru
      * @return \Illuminate\Http\Response
      */
-    public function edit(Guru $guru)
+    public function edit(Guru $admin_guru)
     {
-        //
+        return view('admin.guru.edit', [
+            'guru' => $admin_guru
+        ]);
     }
 
     /**
@@ -81,9 +84,25 @@ class GuruController extends Controller
      * @param  \App\Models\Guru  $guru
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Guru $guru)
+    public function update(Request $request, $admin_guru)
     {
-        //
+        $old_data = Guru::where('id', $admin_guru)->first();
+
+        $validatedData = $request->validate([
+            // 'nip' => 'required|numeric|min:4|unique:gurus,nip',
+            'nip' => [
+                'required', 'numeric', 'min:4',
+                Rule::unique('gurus', 'nip')->where(function ($q) use ($old_data) {
+                    $q->where('nip', '!=', $old_data->nip);
+                })
+            ],
+            'nama' => 'required|min:5',
+            'alamat' => 'required|min:15',
+            'jenis_kelamin' => 'required'
+        ]);
+
+        Guru::where('id', $admin_guru)->update($validatedData);
+        return redirect()->to('/admin-guru')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -92,8 +111,9 @@ class GuruController extends Controller
      * @param  \App\Models\Guru  $guru
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Guru $guru)
+    public function destroy(Guru $admin_guru)
     {
-        //
+        $admin_guru->delete();
+        return back()->with('success', 'Data berhasil dihapus');
     }
 }

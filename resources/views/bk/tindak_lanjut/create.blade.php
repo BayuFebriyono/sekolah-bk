@@ -1,4 +1,8 @@
 @extends('bk.main.main')
+@section('add-css')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="{{ asset('dselect/css/dselect.min.css') }}">
+@endsection
 @section('content')
     <div class="container">
         <div class="col-xxl">
@@ -53,8 +57,56 @@
                             </div>
                         </div>
                     </form>
+
+                </div>
+            </div>
+            <p class="text-muted">History Tindak Lanjut</p>
+
+            <div class="card mt-4">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h4>History Tindak Lanjut Pelanggaran Siswa</h4>
+                </div>
+                <div class="card-body">
+
+                    <table id="example" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Guru </th>
+                                <th>Tanggal</th>
+                                <th>Tindak Lanjut</th>
+                                <th>Hasil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($tindak_lanjut as $t)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $t->guru->nama }}</td>
+                                    <td>{{ $t->tanggal }}</td>
+                                    <td>{{ $t->tindak_lanjut }}</td>
+                                    <td>{{ $t->hasil }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('add-script')
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                scrollX: true,
+            });
+        });
+    </script>
 @endsection

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('siswas', function (Blueprint $table) {
             $table->id();
-            $table->string('tahun_masuk', 4);
+            $table->string('tahun_masuk', 10);
             $table->string('nomor_induk');
             $table->string('password');
             $table->string('nama');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('hp_siswa', 14);
             $table->string('hp_wali', 14);
             $table->text('tes_diagnostik');
-            $table->string('tahun_pelajaran', 10);
+            $table->string('tahun_pelajaran', 10)->nullable();
             $table->timestamps();
         });
     }
