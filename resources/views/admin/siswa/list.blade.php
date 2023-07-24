@@ -186,12 +186,13 @@
                         <td>{{ $s->tes_diagnostik }}</td>
                         <td>
                             <div class="d-inline">
-                                <span><a href="/admin-siswa/{{ $s->id }}/edit"
-                                        class="btn btn-warning mb-2">Edit</a></span>
+                                <span><a href="/admin-siswa/{{ $s->id }}/edit" class="btn btn-warning mb-2"><i
+                                            class="fa-solid fa-pen-to-square"></i></a></span>
                                 <form action="/admin-siswa/{{ $s->id }}" class="d-inline" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                    <button type="submit" class="btn btn-danger"><i
+                                            class="fa-solid fa-trash-can"></i></button>
                                 </form>
                             </div>
                         </td>
@@ -214,4 +215,11 @@
             });
         });
     </script>
+    @if ($errors->any())
+        <script>
+            $(document).ready(function() {
+                $("#modalCenter").modal('show');
+            });
+        </script>
+    @endif
 @endsection

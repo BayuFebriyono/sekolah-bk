@@ -79,12 +79,13 @@
                         <td>{{ $k->nama_kelas }}</td>
                         <td>
                             <div class="d-inline">
-                                <span><a href="/admin-kelas/{{ $k->id }}/edit"
-                                        class="btn btn-warning">Edit</a></span>
+                                <span><a href="/admin-kelas/{{ $k->id }}/edit" class="btn btn-warning"><i
+                                            class="fa-solid fa-pen-to-square"></i></a></span>
                                 <form action="/admin-kelas/{{ $k->id }}" class="d-inline" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                    <button type="submit" class="btn btn-danger"><i
+                                            class="fa-solid fa-trash-can"></i></button>
                                 </form>
                             </div>
                         </td>
@@ -107,4 +108,11 @@
             });
         });
     </script>
+    @if ($errors->any())
+        <script>
+            $(document).ready(function() {
+                $("#modalCenter").modal('show');
+            });
+        </script>
+    @endif
 @endsection
