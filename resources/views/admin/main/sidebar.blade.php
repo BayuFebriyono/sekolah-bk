@@ -83,7 +83,7 @@
 
         {{-- Import --}}
         <li class="menu-item">
-            <a href="/admin-kesiswaan" class="menu-link">
+            <a href="/admin-import" class="menu-link">
                 <i class="menu-icon tf-icon fa-solid fa-file-excel"></i>
                 <div data-i18n="Boxicons">Import Data</div>
             </a>

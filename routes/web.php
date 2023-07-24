@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\GuruBkController;
 use App\Http\Controllers\Admin\GuruController;
+use App\Http\Controllers\Admin\ImportController;
 use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\KesiswaanController;
 use App\Http\Controllers\Admin\SiswaController;
@@ -65,6 +66,8 @@ Route::resource('/admin-bk', GuruBkController::class)->middleware('guru');
 Route::resource('/admin-kesiswaan', KesiswaanController::class)->middleware('guru');
 // CRUD WARGA KELAS
 Route::resource('/admin-warga', WargaKelasController::class)->middleware('guru');
+// Import
+Route::get('/admin-import', [ImportController::class, 'index'])->middleware('guru');
 
 
 // Route BK
