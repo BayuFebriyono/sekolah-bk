@@ -68,6 +68,7 @@ Route::resource('/admin-kesiswaan', KesiswaanController::class)->middleware('gur
 Route::resource('/admin-warga', WargaKelasController::class)->middleware('guru');
 // Import
 Route::get('/admin-import', [ImportController::class, 'index'])->middleware('guru');
+Route::post('/admin-import', [ImportController::class, 'importSiswa'])->middleware('guru');
 
 
 // Route BK
