@@ -2,21 +2,10 @@
 
 @section('add-css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
-    <script src="{{ asset('sweetalert/sweetalert.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('sweetalert/sweetalert.min.css') }}">
 @endsection
 
 @section('content')
     <div class="container">
-        @if ($errors->any())
-            <script>
-                Swal.fire(
-                    'Gagal',
-                    'Murid sudah terdaftar di kelas lain',
-                    'error'
-                )
-            </script>
-        @endif
         <h4>List Kelas</h4>
         <table id="example" class="table table-striped" style="width:100%">
             <thead>

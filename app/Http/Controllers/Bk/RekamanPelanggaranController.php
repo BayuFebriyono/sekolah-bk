@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Bk;
 
-use App\Models\TindakLanjut;
+use App\Models\Siswa;
+use App\Models\TataTertib;
 use Illuminate\Http\Request;
-use App\Models\RekamanTataTertib;
-use App\Http\Controllers\Controller;
 use App\Models\RekamanPelanggaran;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
-class TindakLanjutController extends Controller
+
+class RekamanPelanggaranController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -19,7 +19,7 @@ class TindakLanjutController extends Controller
     public function index()
     {
         $rek_tartib = RekamanPelanggaran::with(['guru', 'siswa', 'tataTertib'])->get();
-        return view('bk.tindak_lanjut.list', [
+        return view('bk.rekaman_tartib.list', [
             'rek' => $rek_tartib
         ]);
     }
@@ -31,7 +31,12 @@ class TindakLanjutController extends Controller
      */
     public function create()
     {
-        //
+        $tatatertib = TataTertib::all();
+        $siswa = Siswa::all();
+        return view('bk.rekaman_tartib.create', [
+            'tata_tertib' => $tatatertib,
+            'siswa' => $siswa
+        ]);
     }
 
     /**
@@ -43,24 +48,24 @@ class TindakLanjutController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'rekaman_tata_tertib_id' => $request->rekaman_tata_tertib_id,
-            'guru_id' => Auth::guard('guru')->user()->id,
-            'tanggal' => now()->toDate(),
-            'tindak_lanjut' => $request->tindak_lanjut,
-            'hasil' => $request->hasil
+            'guru_id' => auth()->guard('guru')->user()->id,
+            'tata_tertib_id' => $request->tata_tertib_id,
+            'siswa_id' => $request->siswa_id,
+            'tahun_pelajaran' => $request->tahun_pelajaran,
+            'tanggal' => now()->toDate()
         ];
 
-        TindakLanjut::create($data);
-        return back()->with('success', 'Data ditambahkan');
+        RekamanPelanggaran::create($data);
+        return back()->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TindakLanjut  $tindakLanjut
+     * @param  \App\Models\RekamanTataTertib  $rekamanTataTertib
      * @return \Illuminate\Http\Response
      */
-    public function show(TindakLanjut $tindakLanjut)
+    public function show(RekamanPelanggaran $rekamanTataTertib)
     {
         //
     }
@@ -68,26 +73,22 @@ class TindakLanjutController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TindakLanjut  $tindakLanjut
+     * @param  \App\Models\RekamanTataTertib  $rekamanTataTertib
      * @return \Illuminate\Http\Response
      */
-    public function edit(RekamanPelanggaran $tindak_lanjut)
+    public function edit(RekamanPelanggaran $rekamanTataTertib)
     {
-        $list_tindak_lanjut = TindakLanjut::where('rekaman_tata_tertib_id', $tindak_lanjut->id)->get();
-        return view('bk.tindak_lanjut.create', [
-            'rekaman' => $tindak_lanjut,
-            'tindak_lanjut' => $list_tindak_lanjut
-        ]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TindakLanjut  $tindakLanjut
+     * @param  \App\Models\RekamanTataTertib  $rekamanTataTertib
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TindakLanjut $tindakLanjut)
+    public function update(Request $request, RekamanPelanggaran $rekamanTataTertib)
     {
         //
     }
@@ -95,10 +96,10 @@ class TindakLanjutController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TindakLanjut  $tindakLanjut
+     * @param  \App\Models\RekamanTataTertib  $rekamanTataTertib
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TindakLanjut $tindakLanjut)
+    public function destroy(RekamanPelanggaran $rekamanTataTertib)
     {
         //
     }

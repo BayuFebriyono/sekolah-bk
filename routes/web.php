@@ -10,10 +10,10 @@ use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\Siswa\SiswaController as SiswaBiasa;
 use App\Http\Controllers\Admin\WaliKelasController;
 use App\Http\Controllers\Admin\WargaKelasController;
+use App\Http\Controllers\Bk\RekamanPelanggaranController;
 use App\Http\Controllers\Bk\TataTertibController;
 use App\Http\Controllers\Bk\TindakLanjutController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RekamanTartibController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -87,7 +87,7 @@ Route::post('/bk-ubah-pass', [LoginController::class, 'ubahGuru'])->middleware('
 Route::resource('/bk-tartib', TataTertibController::class)->middleware('guru_bk');
 
 // CRUD REKAMAN TATATERTIB  nanti dikasih middleware ya
-Route::resource('/rekaman-tartib', RekamanTartibController::class);
+Route::resource('/rekaman-tartib', RekamanPelanggaranController::class);
 
 // CRUD Tindak_lanjut
 Route::resource('/tindak-lanjut', TindakLanjutController::class);
