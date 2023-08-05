@@ -17,7 +17,7 @@ class WaliKelasController extends Controller
      */
     public function index()
     {
-        $guru = Guru::all();
+        $guru = Guru::where('admin', false)->get();
         $kelas = Kelas::all();
         $walas = WaliKelas::with(['guru', 'kelas'])->get();
         return view('admin.walas.list', [
