@@ -23,6 +23,6 @@ class WaliKelas extends Model
 
     public function wargaKelas()
     {
-        return $this->hasOne(WargaKelas::class);
+        return $this->hasMany(WargaKelas::class, 'wali_kelas_id', 'guru_id');
     }
 }

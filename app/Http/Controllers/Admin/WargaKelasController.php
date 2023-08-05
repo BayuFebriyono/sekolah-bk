@@ -19,7 +19,7 @@ class WargaKelasController extends Controller
     public function index()
     {
         $warga_kelas = WargaKelas::all();
-        $wali_kelas = WaliKelas::all();
+        $wali_kelas = WaliKelas::with('wargaKelas')->get();
         return view('admin.warga_kelas.list', [
             'warga_kelas' => $warga_kelas,
             'wali_kelas' => $wali_kelas
@@ -46,7 +46,7 @@ class WargaKelasController extends Controller
     {
         $validatedData = $request->validate([
             'kelas_id' => 'required',
-            'siswa_id' => 'required',
+            'siswa_id' => 'required|unique:warga_kelas,siswa_id',
             'wali_kelas_id' => 'required',
             'tahun_pelajaran' => 'required'
         ]);

@@ -3,9 +3,20 @@
 @section('add-css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
     <link rel="stylesheet" href="{{ asset('dselect/css/dselect.min.css') }}">
+    <script src="{{ asset('sweetalert/sweetalert.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('sweetalert/sweetalert.min.css') }}">
 @endsection
 
 @section('content')
+    @if ($errors->any())
+        <script>
+            Swal.fire(
+                'Gagal',
+                'Murid sudah terdaftar di kelas lain',
+                'error'
+            )
+        </script>
+    @endif
     <div class="bs-toast toast toast-placement-ex m-2 fade bg-primary position-fixed bottom-0 end-0 p-3 {{ session('success') ? 'show' : 'hide' }}"
         role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
         <div class="toast-header">

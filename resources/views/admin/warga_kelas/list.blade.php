@@ -2,10 +2,21 @@
 
 @section('add-css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+    <script src="{{ asset('sweetalert/sweetalert.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('sweetalert/sweetalert.min.css') }}">
 @endsection
 
 @section('content')
     <div class="container">
+        @if ($errors->any())
+            <script>
+                Swal.fire(
+                    'Gagal',
+                    'Murid sudah terdaftar di kelas lain',
+                    'error'
+                )
+            </script>
+        @endif
         <h4>List Kelas</h4>
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
@@ -13,6 +24,7 @@
                     <th>No.</th>
                     <th>Kelas</th>
                     <th>Wali Kelas</th>
+                    <th>Jumlah Murid</th>
                     <th>Tahun Pelajaran</th>
                     <th>Action</th>
 
@@ -24,6 +36,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $w->kelas->nama_kelas }}</td>
                         <td>{{ $w->guru->nama }}</td>
+                        <td>{{ $w->wargaKelas->count() }}</td>
                         <td>{{ $w->tahun_pelajaran }}</td>
                         <td>
                             <a class="btn btn-warning" href="/admin-warga/{{ $w->id }}"><i
