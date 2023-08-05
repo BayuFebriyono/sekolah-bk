@@ -2,10 +2,22 @@
 
 @section('add-css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+    <script src="{{ asset('sweetalert/sweetalert.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('sweetalert/sweetalert.min.css') }}">
 @endsection
 
 @section('content')
     <div class="container">
+
+        @if (session('success'))
+            <script>
+                Swal.fire(
+                    'Berhasil',
+                    '{{ session('success') }}',
+                    'success'
+                )
+            </script>
+        @endif
 
         {{-- Modal --}}
         <div class="mt-3">

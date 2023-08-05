@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Kelas;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class KelasController extends Controller
 {
@@ -41,7 +42,7 @@ class KelasController extends Controller
     {
         $validatedData = $request->validate([
             'tingkat' => 'required',
-            'nama_kelas' => 'required'
+            'nama_kelas' => 'required|unique:kelas,nama_kelas'
         ]);
 
         Kelas::create($validatedData);
@@ -81,10 +82,15 @@ class KelasController extends Controller
      */
     public function update(Request $request,  $admin_kela)
     {
+        $old_data = Kelas::where('id', $admin_kela)->first();
 
         $validatedData = $request->validate([
-            'tingkat' => 'required',
-            'nama_kelas' => 'required'
+            'tingkat' => ['required'],
+            'nama_kelas' => ['required',
+                Rule::unique('kelas', 'nama_kelas')->where(function($q) use ($old_data){
+                    $q->where('nama_kelas', '!=' , $old_data->nama_kelas);
+                })
+            ]
         ]);
         Kelas::where('id', $admin_kela)->update($validatedData);
         return redirect()->to('/admin-kelas')->with('success', 'Data berhasil diubah');
