@@ -2,11 +2,22 @@
 
 @section('add-css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+    <script src="{{ asset('sweetalert/sweetalert.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('sweetalert/sweetalert.min.css') }}">
 @endsection
 
 @section('content')
     <div class="container">
 
+        @if (session('success'))
+            <script>
+                Swal.fire(
+                    'Berhasil',
+                    '{{ session('success') }}',
+                    'success'
+                )
+            </script>
+        @endif
 
         {{-- Modal --}}
         <div class="mt-3">
@@ -136,8 +147,16 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="TesDIagnostik">Tes Diagnostik</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="TesDIagnostik"
-                                            name="tes_diagnostik" required value="{{ old('tes_diagnostik') }}">
+                                        <select name="tes_diagnostik" id="TesDIagnostik" class="form-select">
+                                            <option value="Visual"
+                                                {{ old('tes_diagnostik') == 'Visual' ? 'selected' : '' }}>Visual</option>
+                                            <option value="Kinestetik"
+                                                {{ old('tes_diagnostik') == 'Kinestetik' ? 'selected' : '' }}>Kinestetik
+                                            </option>
+                                            <option value="Auditori"
+                                                {{ old('tes_diagnostik') == 'Auditori' ? 'selected' : '' }}>Auditori
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -210,8 +229,43 @@
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#example').DataTable({
-                scrollX: true,
+            // $('#example').DataTable({
+            //     scrollX: true,
+            // });
+
+            $('#example').dataTable({
+                bAutoWidth: false,
+                aoColumns: [{
+                        sWidth: '5%'
+                    },
+                    {
+                        sWidth: '5%'
+                    },
+                    {
+                        sWidth: '8%'
+                    },
+                    {
+                        sWidth: '15%'
+                    },
+                    {
+                        sWidth: '24%'
+                    },
+                    {
+                        sWidth: '8%'
+                    },
+                    {
+                        sWidth: '10%'
+                    },
+                    {
+                        sWidth: '10%'
+                    },
+                    {
+                        sWidth: '5%'
+                    },
+                    {
+                        sWidth: '10%'
+                    }
+                ]
             });
         });
     </script>

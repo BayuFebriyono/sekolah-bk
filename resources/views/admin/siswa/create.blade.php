@@ -129,8 +129,11 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="TesDIagnostik">Tes Diagnostik</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="TesDIagnostik" name="tes_diagnostik"
-                                    required value="{{ old('tes_diagnostik') }}">
+                                <select name="tes_diagnostik" id="TesDIagnostik" class="form-select">
+                                    <option value="Visual">Visual</option>
+                                    <option value="Kinestetik">Kinestetik</option>
+                                    <option value="Auditori">Auditori</option>
+                                </select>
                             </div>
                         </div>
 

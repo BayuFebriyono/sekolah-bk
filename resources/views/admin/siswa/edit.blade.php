@@ -123,8 +123,23 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="TesDIagnostik">Tes Diagnostik</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="TesDIagnostik" name="tes_diagnostik"
-                                    required value="{{ old('tes_diagnostik') ?? $siswa->tes_diagnostik }}">
+                                <select name="tes_diagnostik" id="TesDIagnostik" class="form-select">
+                                    <option value="Visual"
+                                        @if (old('tes_diagnostik') == 'Visual') {{ 'selected' }}
+                                    @elseif ($siswa->tes_diagnostik == 'Visual')
+                                    {{ 'selected' }} @endif>
+                                        Visual</option>
+                                    <option value="Kinestetik"
+                                        @if (old('tes_diagnostik') == 'Kinestetik') {{ 'selected' }}
+                                    @elseif ($siswa->tes_diagnostik == 'Kinestetik')
+                                    {{ 'selected' }} @endif>
+                                        Kinestetik</option>
+                                    <option value="Auditori"
+                                        @if (old('tes_diagnostik') == 'Auditori') {{ 'selected' }}
+                                    @elseif ($siswa->tes_diagnostik == 'Auditori')
+                                    {{ 'selected' }} @endif>
+                                        Auditori</option>
+                                </select>
                             </div>
                         </div>
 
