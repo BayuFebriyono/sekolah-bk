@@ -16,7 +16,7 @@ class GuruController extends Controller
      */
     public function index()
     {
-        $guru = Guru::all();
+        $guru = Guru::where('admin', false)->get();
         return view('admin.guru.list', [
             'guru' => $guru
         ]);

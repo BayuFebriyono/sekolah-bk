@@ -140,8 +140,31 @@
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#example').DataTable({
-                scrollX: true,
+            // $('#example').DataTable({
+            //     scrollX: true,
+            // });
+
+            $('#example').dataTable({
+                bAutoWidth: false,
+                aoColumns: [{
+                        sWidth: '5%'
+                    },
+                    {
+                        sWidth: '16%'
+                    },
+                    {
+                        sWidth: '25%'
+                    },
+                    {
+                        sWidth: '27%'
+                    },
+                    {
+                        sWidth: '5%'
+                    },
+                    {
+                        sWidth: '16%'
+                    },
+                ]
             });
         });
     </script>

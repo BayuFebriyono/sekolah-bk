@@ -70,6 +70,10 @@ Route::resource('/admin-warga', WargaKelasController::class)->middleware('guru')
 Route::get('/admin-import', [ImportController::class, 'index'])->middleware('guru');
 Route::post('/admin-import', [ImportController::class, 'importSiswa'])->middleware('guru');
 
+// Profile
+Route::get('/admin-edit', [AdminController::class, 'editProfile'])->middleware('guru');
+Route::Post('/admin-edit', [AdminController::class, 'updateProfile'])->middleware('guru');
+
 
 // Route BK
 Route::get('/bk-dashboard', function () {

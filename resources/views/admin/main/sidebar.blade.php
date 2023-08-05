@@ -101,6 +101,13 @@
         </li>
 
         <li class="menu-item">
+            <a href="/admin-edit" class="menu-link">
+                <i class="menu-icon tf-icon fa-solid fa-user"></i>
+                <div data-i18n="Boxicons">Ganti Profil</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
             <a href="/logout" class="menu-link">
                 <i class="menu-icon tf-icon fa-solid fa-arrow-right-from-bracket"></i>
                 <div data-i18n="Boxicons">Sign Out</div>
