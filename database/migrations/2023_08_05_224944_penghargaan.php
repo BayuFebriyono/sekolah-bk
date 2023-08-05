@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tata_tertib', function (Blueprint $table) {
+        Schema::create('penghargaans', function (Blueprint $table) {
             $table->id();
-            $table->string('kategori');
-            $table->string('jenis_pelanggaran');
+            $table->string('penghargaan');
             $table->integer('poin');
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tata_tertib');
+        Schema::dropIfExists('penghargaans');
     }
 };

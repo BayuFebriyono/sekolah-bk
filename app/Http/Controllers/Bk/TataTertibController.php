@@ -41,9 +41,9 @@ class TataTertibController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'tata_tertib' => 'required|min:5',
-            'poin' => 'required',
-            'tindakan' => 'required|min:8'
+            'kategori' => 'required',
+            'jenis_pelanggaran' => 'required',
+            'poin' => 'required'
         ]);
 
         TataTertib::create($validatedData);
@@ -67,9 +67,11 @@ class TataTertibController extends Controller
      * @param  \App\Models\TataTertib  $tataTertib
      * @return \Illuminate\Http\Response
      */
-    public function edit(TataTertib $tataTertib)
+    public function edit(TataTertib $bk_tartib)
     {
-        //
+        return view('bk.tata_tertib.edit',[
+            'tartib' => $bk_tartib
+        ]);
     }
 
     /**
@@ -79,9 +81,16 @@ class TataTertibController extends Controller
      * @param  \App\Models\TataTertib  $tataTertib
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TataTertib $tataTertib)
+    public function update(Request $request, TataTertib $bk_tartib)
     {
-        //
+        $validatedData = $request->validate([
+            'kategori' => 'required',
+            'jenis_pelanggaran' => 'required',
+            'poin' => 'required'
+        ]);
+
+        $bk_tartib->update($validatedData);
+        return redirect()->to('/bk-tartib')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -90,8 +99,9 @@ class TataTertibController extends Controller
      * @param  \App\Models\TataTertib  $tataTertib
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TataTertib $tataTertib)
+    public function destroy(TataTertib $bk_tartib)
     {
-        //
+        $bk_tartib->delete();
+        return back()->with('success', 'Data berhasil dihapus');
     }
 }

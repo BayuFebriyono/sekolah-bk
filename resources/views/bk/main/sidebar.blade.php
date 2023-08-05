@@ -22,23 +22,10 @@
 
         <!-- Tata Tertib -->
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a href="/bk-tartib" class="menu-link">
                 <i class="menu-icon tf-icon fa-solid fa-scale-balanced"></i>
-                <div data-i18n="Layouts">Data Tata Tertib</div>
+                <div data-i18n="Boxicons">Tata Tertib</div>
             </a>
-
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="/bk-tartib/create" class="menu-link">
-                        <div data-i18n="Without menu">Tambah Data</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="/bk-tartib" class="menu-link">
-                        <div data-i18n="Without navbar">List Data Tartib</div>
-                    </a>
-                </li>
-            </ul>
         </li>
 
         {{-- Rekaman --}}
