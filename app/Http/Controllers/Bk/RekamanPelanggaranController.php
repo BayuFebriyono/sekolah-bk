@@ -11,16 +11,21 @@ use App\Http\Controllers\Controller;
 
 class RekamanPelanggaranController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $rek_tartib = RekamanPelanggaran::with(['guru', 'siswa', 'tataTertib'])->get();
-        return view('bk.rekaman_tartib.list', [
-            'rek' => $rek_tartib
+        $rek_tartib = RekamanPelanggaran::with(['guru', 'siswa.wargaKelas.kelas', 'tataTertib'])->get();
+        $siswa = Siswa::all();
+        $tartib = TataTertib::all();
+        return view('bk.rekaman_pelanggaran.list', [
+            'no' => now()->format('y') . now()->format('m') . str_pad($this->getDataByCurrentMonth()->count() +1, 3, '0', STR_PAD_LEFT) ,
+            'rek' => $rek_tartib,
+            'siswa' => $siswa,
+            'tata_tertib' => $tartib
         ]);
     }
 
@@ -33,7 +38,7 @@ class RekamanPelanggaranController extends Controller
     {
         $tatatertib = TataTertib::all();
         $siswa = Siswa::all();
-        return view('bk.rekaman_tartib.create', [
+        return view('bk.rekaman_pelanggaran.create', [
             'tata_tertib' => $tatatertib,
             'siswa' => $siswa
         ]);
@@ -48,6 +53,7 @@ class RekamanPelanggaranController extends Controller
     public function store(Request $request)
     {
         $data = [
+            'no_pelanggaran' => $request->no_pelanggaran,
             'guru_id' => auth()->guard('guru')->user()->id,
             'tata_tertib_id' => $request->tata_tertib_id,
             'siswa_id' => $request->siswa_id,
@@ -76,9 +82,13 @@ class RekamanPelanggaranController extends Controller
      * @param  \App\Models\RekamanTataTertib  $rekamanTataTertib
      * @return \Illuminate\Http\Response
      */
-    public function edit(RekamanPelanggaran $rekamanTataTertib)
+    public function edit(RekamanPelanggaran $rekaman_tartib)
     {
-        //
+        return view('bk.rekaman_pelanggaran.edit',[
+            'rekaman' => $rekaman_tartib,
+            'siswa' => Siswa::all(),
+            'tata_tertib' => TataTertib::all()
+        ]);
     }
 
     /**
@@ -88,9 +98,17 @@ class RekamanPelanggaranController extends Controller
      * @param  \App\Models\RekamanTataTertib  $rekamanTataTertib
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RekamanPelanggaran $rekamanTataTertib)
+    public function update(Request $request, RekamanPelanggaran $rekaman_tartib)
     {
-        //
+        $data = [
+            'guru_id' => auth()->guard('guru')->user()->id,
+            'tata_tertib_id' => $request->tata_tertib_id,
+            'siswa_id' => $request->siswa_id,
+        ];
+
+        $rekaman_tartib->update($data);
+        return redirect()->to('/rekaman-tartib')->with('success', 'Data berhasil diubah');
+
     }
 
     /**
@@ -99,8 +117,23 @@ class RekamanPelanggaranController extends Controller
      * @param  \App\Models\RekamanTataTertib  $rekamanTataTertib
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RekamanPelanggaran $rekamanTataTertib)
+    public function destroy(RekamanPelanggaran $rekaman_tartib)
     {
-        //
+        $rekaman_tartib->delete();
+        return back()->with('success', 'Data berhasil dihapus');
+    }
+
+
+    // Method getDataByCurrentMonth yang telah dibuat sebelumnya
+    private function getDataByCurrentMonth()
+    {
+        $currentMonth = now()->format('m');
+        $currentYear = now()->format('Y');
+
+        $data = RekamanPelanggaran::whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', $currentYear)
+            ->get();
+
+        return $data;
     }
 }

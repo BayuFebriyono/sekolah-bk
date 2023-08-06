@@ -32,7 +32,7 @@
         <li class="menu-item">
             <a href="/rekaman-tartib" class="menu-link">
                 <i class="menu-icon tf-icon fa-solid fa-clipboard"></i>
-                <div data-i18n="Boxicons">Rekaman Tata Tertib</div>
+                <div data-i18n="Boxicons">Rekaman Pelanggaran</div>
             </a>
         </li>
 

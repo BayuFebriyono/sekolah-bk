@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('guru_id');
             $table->foreignId('tata_tertib_id');
             $table->foreignId('siswa_id');
+            $table->integer('no_pelanggaran');
             $table->string('tahun_pelajaran', 14);
             $table->date('tanggal');
             $table->timestamps();
