@@ -16,31 +16,33 @@
         <div class="toast-body">{{ session('success') ? session('success') : '' }}</div>
     </div>
 
-    <div class="container">
-        <a href="/rekaman-tartib/create" class="btn btn-primary my-5">Tambah Data</a>
+    <div class="container mt-3">
+
 
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Guru </th>
-                    <th>Tata Tertib</th>
-                    <th>Poin</th>
-                    <th>Siswa</th>
+                    <th>No Pelanggaran </th>
                     <th>Tahun Pelajaran</th>
-                    <th>Tanggal</th>
+                    <th>Guru</th>
+                    <th>Kelas</th>
+                    <th>Nama Siswa</th>
+                    <th>Jenis Pelanggaran</th>
+                    <th>Point</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($rek as $r)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $r->guru->nama }}</td>
-                        <td>{{ $r->tataTertib->tata_tertib }}</td>
-                        <td>{{ $r->tataTertib->poin }}</td>
-                        <td>{{ $r->siswa->nama }}</td>
+                        <td>{{ $r->no_pelanggaran }}</td>
                         <td>{{ $r->tahun_pelajaran }}</td>
-                        <td>{{ $r->tanggal }}</td>
+                        <td>{{ $r->guru->nama }}</td>
+                        <td>{{ $r->siswa->wargaKelas->kelas->nama_kelas }}</td>
+                        <td>{{ $r->siswa->nama }}</td>
+                        <td>{{ $r->tataTertib->jenis_pelanggaran }}</td>
+                        <td>{{ $r->tataTertib->poin }}</td>
                     </tr>
                 @endforeach
             </tbody>

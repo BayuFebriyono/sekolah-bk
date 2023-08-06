@@ -22,7 +22,7 @@ class RekamanPelanggaranController extends Controller
         $siswa = Siswa::all();
         $tartib = TataTertib::all();
         return view('bk.rekaman_pelanggaran.list', [
-            'no' => now()->format('y') . now()->format('m') . str_pad($this->getDataByCurrentMonth()->count() +1, 3, '0', STR_PAD_LEFT) ,
+            'no' => now()->format('y') . now()->format('m') . $this->getDataByCurrentMonth(),
             'rek' => $rek_tartib,
             'siswa' => $siswa,
             'tata_tertib' => $tartib
@@ -84,7 +84,7 @@ class RekamanPelanggaranController extends Controller
      */
     public function edit(RekamanPelanggaran $rekaman_tartib)
     {
-        return view('bk.rekaman_pelanggaran.edit',[
+        return view('bk.rekaman_pelanggaran.edit', [
             'rekaman' => $rekaman_tartib,
             'siswa' => Siswa::all(),
             'tata_tertib' => TataTertib::all()
@@ -108,7 +108,6 @@ class RekamanPelanggaranController extends Controller
 
         $rekaman_tartib->update($data);
         return redirect()->to('/rekaman-tartib')->with('success', 'Data berhasil diubah');
-
     }
 
     /**
@@ -132,8 +131,15 @@ class RekamanPelanggaranController extends Controller
 
         $data = RekamanPelanggaran::whereMonth('created_at', $currentMonth)
             ->whereYear('created_at', $currentYear)
-            ->get();
+            ->latest()
+            ->first();
 
-        return $data;
+        $lastThreeDigits = substr($data->no_pelanggaran, -3);
+
+        // Ubah string menjadi angka, tambahkan 1, lalu konversi kembali ke string
+        $lastThreeDigitsNumber = intval($lastThreeDigits) + 1;
+        $result = str_pad($lastThreeDigitsNumber, 3, '0', STR_PAD_LEFT);
+
+        return $result;
     }
 }

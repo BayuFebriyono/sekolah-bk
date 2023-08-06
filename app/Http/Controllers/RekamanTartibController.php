@@ -17,7 +17,7 @@ class RekamanTartibController extends Controller
      */
     public function index()
     {
-        $rek_tartib = RekamanTataTertib::with(['guru', 'siswa', 'tataTertib'])->get();
+        $rek_tartib = RekamanTataTertib::with(['guru', 'siswa.wargaKelas.kelas', 'tataTertib'])->get();
         return view('bk.rekaman_tartib.list', [
             'rek' => $rek_tartib
         ]);

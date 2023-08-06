@@ -23,7 +23,7 @@
                 <tr>
                     <th>No.</th>
                     <th>Guru </th>
-                    <th>Tata Tertib</th>
+                    <th>Jenis Pelanggaran</th>
                     <th>Siswa</th>
                     <th>Tahun Pelajaran</th>
                     <th>Tanggal</th>
@@ -35,7 +35,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $r->guru->nama }}</td>
-                        <td>{{ $r->tataTertib->tata_tertib }}</td>
+                        <td>{{ $r->tataTertib->jenis_pelanggaran }}</td>
                         <td>{{ $r->siswa->nama }}</td>
                         <td>{{ $r->tahun_pelajaran }}</td>
                         <td>{{ $r->tanggal }}</td>
